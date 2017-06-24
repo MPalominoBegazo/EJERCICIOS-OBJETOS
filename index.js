@@ -33,10 +33,19 @@ function Persona(nombre,dia,mes,a_nacim){
   this.dia = dia;
   this.mes = mes;
   this.a_nacim = a_nacim;
-  this.annio_actual=2017;
+  //this.annio_actual=2017;
   this.calcularEdad = function(){
-
-    return ("La edad actual de "+this.nombre + " es " + (this. annio_actual - this.a_nacim));
+    var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth();
+    var year = today.getFullYear();
+    if(month < this.mes){
+         return ("La edad actual de "+this.nombre + " es " + ((year - this.a_nacim)-1));
+    }
+    else{
+        return ("La edad actual de "+this.nombre + " es " + (year - this.a_nacim)); 
+    }  
+   
   }
 }
 
@@ -79,10 +88,14 @@ describe("Ejercicios Objetos", function(){
   });
 
   describe("Ejercicio 2", function(){
-     it("Prueba con Datos", function(){
+     it("Si el mes actual es menor que el mes de nacimiento es 25", function(){
+       //assert.equal("La edad actual de Sú es 26",persona.calcularEdad("Sú",23,8,1991));
+        assert.equal("La edad actual de Sú es 25",persona.calcularEdad());
+     });
+     /*it("Si el mes actual es mayor que el mes de nacimiento es 26", function(){
        //assert.equal("La edad actual de Sú es 26",persona.calcularEdad("Sú",23,8,1991));
         assert.equal("La edad actual de Sú es 26",persona.calcularEdad());
-     });
+     });*/
 
   });
 
