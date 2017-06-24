@@ -1,6 +1,6 @@
 var assert = require("assert");
 
-//EJERCICIO 2
+//EJERCICIO 1
 function Rectangulo(base,altura){
   this.base = base;
   this.altura = altura;
